@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Btp::Translations::VERSION
   gem.authors       = ["Beside the Park"]
   gem.email         = ["contact@besidethepark.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Gem for gettext translations.}
+  gem.summary       = %q{Gem for gettext translations.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)

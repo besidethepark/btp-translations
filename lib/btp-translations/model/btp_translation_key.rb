@@ -20,6 +20,8 @@ module BtpTranslations
     # Scopes
     # ----------------------------------------------------------------------
     scope :by_ids, ->(ids) { where('id IN (?)', ids) }
+    scope :deprecated, ->(deprecated = true) { where('deprecated = ?', deprecated) }
+    scope :undeprecated, -> { where('deprecated = ?', false) }
 
     # ----------------------------------------------------------------------
     # Callbacks

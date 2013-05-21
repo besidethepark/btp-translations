@@ -199,7 +199,7 @@ namespace :btp_translations do
   end
 
   def locales
-    ['en', 'pl']
+    BTP_TRANSLATIONS_LOCALES
   end
 
   desc 'Update pot/po files.'
