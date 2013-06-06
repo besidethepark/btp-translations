@@ -8,7 +8,7 @@ module BtpTranslations
     # ----------------------------------------------------------------------
     # Attributes
     # ----------------------------------------------------------------------
-    attr_accessible :key, :scope_separator, :translations, :translations_attributes
+    attr_accessible :key, :scope_separator, :translations, :translations_attributes, :disabled
     accepts_nested_attributes_for :translations, allow_destroy: true
 
     # ----------------------------------------------------------------------
