@@ -5,7 +5,7 @@ class CreateBtpTranslations < ActiveRecord::Migration
       t.string :category
       t.string :scope_separator, limit: 4, default: '|', null: false
       t.boolean :deprecated, default: false, null: false
-
+      t.boolean :disabled, default: false, null: false
       t.timestamps
     end
 
