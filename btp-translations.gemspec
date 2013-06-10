@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["contact@besidethepark.com"]
   gem.description   = %q{Gem for gettext translations.}
   gem.summary       = %q{Gem for gettext translations.}
-  gem.homepage      = ""
+  gem.homepage      = ''
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

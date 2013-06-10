@@ -39,7 +39,7 @@ namespace :btp_translations do
     storage_file = "#{locale_path}/model_attributes.rb"
     puts "writing model translations to: #{storage_file}"
 
-    ignore_tables  = [/^sitemap_/, /_versions$/, /^schema_migrations$/, /^sessions$/, /^delayed_jobs$/]
+    ignore_tables  = [/^sitemap_/, /^schema_migrations$/, /^sessions$/, /^delayed_jobs$/]
     ignore_columns = [/_id$/, /^id$/, /^type$/, /^created_at$/, /^updated_at$/]
 
     File.open(storage_file, 'w') do |f|
