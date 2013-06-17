@@ -12,14 +12,14 @@ Capistrano::Configuration.instance(:must_exist).load do
     task :copy_translations do
       source_stage = btp_translations_source_stage
 
-      if source_stage.to_s != btp_translations_source_stage.to_s
+      if stage.to_s != btp_translations_source_stage.to_s
         ssh_user = ssh_address = ssh_port = ssh_path = ssh_env = nil
 
         files = [File.join('config', 'deploy', "#{source_stage}.rb"), File.join('config', 'deploy.rb')]
 
         files.each do |file|
           File.readlines(file).each do |line|
-            if line.include?('role') && line.include?('app') && ssh_address.nil?
+            if line.include?('role :app') && ssh_address.nil?
               ssh_address = line[/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/]
               ssh_port    = line[/\b:\d{1,6}\b/].gsub(':', '') || 22
             elsif line.include?('set') && line.include?('user') && ssh_user.nil?
