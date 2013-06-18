@@ -19,9 +19,12 @@ module BtpTranslations
     # ----------------------------------------------------------------------
     # Scopes
     # ----------------------------------------------------------------------
-    scope :by_ids, ->(ids) { where('id IN (?)', ids) }
-    scope :deprecated, ->(deprecated = true) { where('deprecated = ?', deprecated) }
-    scope :undeprecated, -> { where('deprecated = ?', false) }
+    scope :by_ids, ->(ids) { where('btp_translation_keys.id IN (?)', ids) }
+    scope :deprecated, ->(deprecated = true) { where('btp_translation_keys.deprecated = ?', deprecated) }
+    scope :undeprecated, -> { where('btp_translation_keys.deprecated = ?', false) }
+    scope :disabled, ->(disabled = true) { where('btp_translation_keys.disabled = ?', disabled) }
+    scope :enabled, -> { where('btp_translation_keys.disabled = ?', false) }
+    scope :sorted_by_key, -> { order('btp_translation_keys.key ASC') }
 
     # ----------------------------------------------------------------------
     # Callbacks
