@@ -45,6 +45,8 @@ module BtpTranslations
       Rails.logger.info("DEPRECATED TRANSLATION KEY: #{nkey}") if translation_key.deprecated?
       return unless translation_text = translation_key.translations.find_by_locale(locale)
       translation_text.text
+    rescue ActiveRecord::StatementInvalid => e
+      nil
     end
 
     def self.available_locales
