@@ -99,34 +99,51 @@ namespace :btp_translations do
 
     translations_with_dots = {}
 
-    # Get standard rails translations
-    locales.each do |locale|
-      yaml = File.read(File.join(Gem.loaded_specs['rails-i18n'].full_gem_path, 'rails', 'locale', "#{locale}.yml"))
-      yaml_hash = YAML.load(yaml)
-      rails_translations = hash_dst(yaml_hash[locale], '.')
+    if USED_GEMS.include?(:rails)
+      # Get standard rails translations
+      locales.each do |locale|
+        yaml = File.read(File.join(Gem.loaded_specs['rails-i18n'].full_gem_path, 'rails', 'locale', "#{locale}.yml"))
+        yaml_hash = YAML.load(yaml)
+        rails_translations = hash_dst(yaml_hash[locale], '.')
 
-      all_translations[locale].merge!(rails_translations)
-      rails_translations.keys.each { |key| translations_with_dots[key] = true }
+        all_translations[locale].merge!(rails_translations)
+        rails_translations.keys.each { |key| translations_with_dots[key] = true }
+      end
     end
 
-    # Get standard devise translations
-    locales.each do |locale|
-      yaml = File.read(File.join(Gem.loaded_specs['devise-i18n'].full_gem_path, 'locales', "#{locale}.yml"))
-      yaml_hash = YAML.load(yaml)
-      devise_translations = hash_dst(yaml_hash[locale], '.')
+    if USED_GEMS.include?(:devise)
+      # Get standard devise translations
+      locales.each do |locale|
+        yaml = File.read(File.join(Gem.loaded_specs['devise-i18n'].full_gem_path, 'locales', "#{locale}.yml"))
+        yaml_hash = YAML.load(yaml)
+        devise_translations = hash_dst(yaml_hash[locale], '.')
 
-      all_translations[locale].merge!(devise_translations)
-      devise_translations.keys.each { |key| translations_with_dots[key] = true }
+        all_translations[locale].merge!(devise_translations)
+        devise_translations.keys.each { |key| translations_with_dots[key] = true }
+      end
     end
 
-    # Get standard will paginate translations
-    locales.each do |locale|
-      yaml = File.read(File.join(Gem.loaded_specs['will-paginate-i18n'].full_gem_path, 'locales', "#{locale}.yml"))
-      yaml_hash = YAML.load(yaml)
-      will_paginate_translations = hash_dst(yaml_hash[locale], '.')
+    if USED_GEMS.include?(:will_paginate)
+      # Get standard will paginate translations
+      locales.each do |locale|
+        yaml = File.read(File.join(Gem.loaded_specs['will-paginate-i18n'].full_gem_path, 'locales', "#{locale}.yml"))
+        yaml_hash = YAML.load(yaml)
+        will_paginate_translations = hash_dst(yaml_hash[locale], '.')
 
-      all_translations[locale].merge!(will_paginate_translations)
-      will_paginate_translations.keys.each { |key| translations_with_dots[key] = true }
+        all_translations[locale].merge!(will_paginate_translations)
+        will_paginate_translations.keys.each { |key| translations_with_dots[key] = true }
+      end
+    end
+
+    if USED_GEMS.include?(:activeadmin)
+      locales.each do |locale|
+        yaml = File.read(File.join(Gem.loaded_specs['activeadmin'].full_gem_path, 'lib', 'active_admin', 'locales', "#{locale}.yml"))
+        yaml_hash = YAML.load(yaml)
+        active_admin_translations = hash_dst(yaml_hash[locale], '.')
+
+        all_translations[locale].merge!(active_admin_translations)
+        active_admin_translations.keys.each { |key| translations_with_dots[key] = true }
+      end
     end
 
     # Get keys translations from a database

@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'btp-translations/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "btp-translations"
+  gem.name          = 'btp-translations'
   gem.version       = Btp::Translations::VERSION
-  gem.authors       = ["Beside the Park"]
-  gem.email         = ["contact@besidethepark.com"]
+  gem.authors       = ['Beside the Park']
+  gem.email         = ['contact@besidethepark.com']
   gem.description   = %q{Gem for gettext translations.}
   gem.summary       = %q{Gem for gettext translations.}
   gem.homepage      = ''
@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
+  gem.require_paths = ['lib']
 
   gem.add_runtime_dependency 'rails', ['>= 3', '< 4']
 
@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rails-i18n', '>= 0.7.3'
   gem.add_dependency 'devise-i18n', '>= 0.8.3'
   gem.add_dependency 'will-paginate-i18n', '>= 0.1.13'
+  gem.add_dependency 'activeadmin', '>= 0.6.0'
 
   gem.add_dependency 'appraisal'
   gem.add_dependency 'bump'
