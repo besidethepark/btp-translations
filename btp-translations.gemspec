@@ -29,7 +29,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'appraisal'
   gem.add_dependency 'bump'
-  gem.add_dependency 'gettext'
+  gem.add_dependency 'gettext', ['>= 2.3', '< 3']
   gem.add_dependency 'haml'
   gem.add_dependency 'rails'
   gem.add_dependency 'rake'
